@@ -1,0 +1,56 @@
+<html>
+<head><title>HM-SURF</title></head>
+<body>
+<video id="player" autoplay muted playsinline></video>
+<canvas id="canvas" width=320 height=240></canvas>
+<script>
+
+    // Get elements
+    const player = document.getElementById('player');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // Video settings
+    const constraints = {
+        video: {
+            facingMode: {
+                exact: 'environment'
+            }
+        }
+    };
+
+    // Takes the snapshot
+    function snap() {
+        
+        // Draw the image
+        context.drawImage(player, 0, 0, canvas.width, canvas.height);
+
+        // Save as image
+        var image = canvas.toDataURL();
+
+        // Create download link
+        var downloadLink = document.createElement('a');
+        downloadLink.download = 'hm_surf.png';
+        downloadLink.href = image;
+
+        // Click the link
+        downloadLink.click();
+
+        // Pause video
+        player.pause();
+
+        // Clear canvas
+        context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Take snapshot when video starts playing
+    player.oncanplay = snap;
+
+    // Trigger
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then((stream) => {
+            player.srcObject = stream;
+        });
+</script>
+</body>
+</html>

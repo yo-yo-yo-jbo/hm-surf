@@ -1,14 +1,16 @@
 <html>
 <head><title>HM-SURF</title></head>
-<body>
+<body background="black" text="white">
 <video id="player" autoplay muted playsinline></video>
 <canvas id="canvas" width=320 height=240></canvas>
+<div id="pos"></div>
 <script>
 
     // Get elements
     const player = document.getElementById('player');
     const canvas = document.getElementById('canvas');
     const context = canvas.getContext('2d');
+    const pos = document.getElementById('pos');
 
     // Video settings
     const constraints = {
@@ -18,6 +20,11 @@
             }
         }
     };
+
+    // Shows coordinates for demonstration purposes
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) { pos.innerHTML = 'Your location is: (' + position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + ')'; });
+    }
 
     // Takes the snapshot
     function snap() {

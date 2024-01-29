@@ -19,17 +19,12 @@
         }
     };
 
-    // Gets geolocation coordinates
-    const getCoords = async () => {
-        const pos = await new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
-        return {
-            long: pos.coords.longitude,
-            lat: pos.coords.latitude,
-        };
-    };
+    // Gets the position
+    function getPosition(options?: PositionOptions): Promise<Position> {
+        return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, options));
+    }
 
+    // Gets the filename
     function getFilename() {
 
         // The base filename
@@ -37,8 +32,7 @@
 
         // Derive location
         if (navigator.geolocation) {
-            coords = await getCoords();
-            baseFilename += '_' + coords.lat.toString() + '_' + coords.long.toString();
+            getPosition(options).then((position) => { baseFilename += '_' + position.coords.latitude.toString() + '_' + position.coords.longitude.toString() });
         }
 
         // Return the filename with the right extension

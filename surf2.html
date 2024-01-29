@@ -20,7 +20,7 @@
     };
 
     // Gets the position
-    function getPosition(options?: PositionOptions): Promise<Position> {
+    function getPosition(options) {
         return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject, options));
     }
 

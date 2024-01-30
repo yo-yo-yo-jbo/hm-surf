@@ -39,7 +39,7 @@
 
     // Shows coordinates for demonstration purposes
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) { pos.innerHTML = 'Your location is: (' + position.coords.latitude.toString() + ', ' + position.coords.longitude.toString() + ')'; });
+        navigator.geolocation.getCurrentPosition(function(position) { pos.innerHTML = 'Your location is: (' + position.coords.latitude.toFixed(3).toString() + ', ' + position.coords.longitude.toFixed(3).toString() + ')'; });
     }
 
     // Takes the snapshot

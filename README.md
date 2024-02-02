@@ -1,5 +1,5 @@
 # HM-Surf
-Taking a screenshot and downloading it.
+Taking a screenshot and downloading it along with location extraction.
 
 <pre>
   ⬜⬜⬜⬜⬜⬛⬛⬛⬛⬜⬜⬜⬜⬜

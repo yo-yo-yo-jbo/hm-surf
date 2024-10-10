@@ -1,5 +1,6 @@
 # HM-Surf evaluator
-Taking a screenshot and downloading it along with location extraction, was used in [CVE-2024-44133](https://nvd.nist.gov/vuln/detail/CVE-2024-44133).
+Evaluates susceptibility to [CVE-2024-44133](https://nvd.nist.gov/vuln/detail/CVE-2024-44133) of common macOS browsers.  
+Also contains the HTML that takes a screenshot and downloads it along with location extraction.
 ![Screenshot](screenshot.png)
 
 ## Usage - evaluator

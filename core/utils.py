@@ -94,7 +94,7 @@ class Utils(metaclass=Singleton):
             # Find the implementation
             impl_class = [ (name, val) for name, val in evaluator_impl.__dict__.items() if inspect.isclass(val) and issubclass(val, BrowserEvaluatorBase) and not inspect.isabstract(val) ]
             if len(impl_class) == 0:
-                printer.append_extra(f'Skipping file "evaluator_filename"')
+                printer.append_extra(f'Skipping file "{evaluator_filename}"')
                 continue
             if len(impl_class) > 1:
                 raise Exception(f'Evaluator file "{evaluator_filename}" contains multiple subclasses of "BrowserEvaluatorBase"')
